@@ -13,15 +13,16 @@ const sendEmail = async(req, res) => {
     
     let sended = await sendMail(name, email, subject, message);
 
-    if(!sended){
+    if(sended.status !== 'ok'){
         res.status(500).json({ 
             status: 'error',
-            message: 'Error sending email' 
+            message: 'Internal server error',
+            detail: sended.message
         });
     }else{
         res.status(200).json({ 
             status: 'ok',
-            message: 'Email sent' 
+            message: 'Email sent'
         });
     }
 }

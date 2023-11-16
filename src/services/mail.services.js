@@ -44,9 +44,15 @@ const sendMail = async (name,sender, subject, message) => {
             html: html, 
         });
         console.log('Mail sent 📧');
-        return true;
+        return {
+            status: 'ok',
+            message: 'Email sent'
+        }
     }catch(error){
-        throw new Error(error);
+        return {
+            status: 'error',
+            message: error.message
+        }
     }
 }
 

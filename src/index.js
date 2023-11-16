@@ -9,14 +9,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-    }
-);
+app.get('/health', (res) => {
+    res.status(200).json({ 
+        status: 'ok',
+        message: 'Server is running' 
+    });
+});
 
 app.post('/send-email', sendEmail);
 
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
     }
 );
