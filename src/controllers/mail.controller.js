@@ -3,7 +3,7 @@ const sendMail = require('./../services/mail.services');
 const sendEmail = async(req, res) => {
     const { name, email, subject, message } = req.body;
 
-    if (!name || !email || !suject || !message){
+    if (!name || !email || !subject || !message){
         res.status(400).json({
             status: 'error',
             message: 'Bad request'
